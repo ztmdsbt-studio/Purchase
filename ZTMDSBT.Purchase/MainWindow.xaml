@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Button x:Name="button" Content="Open Firefox" HorizontalAlignment="Left" Margin="187,133,0,0" VerticalAlignment="Top" Width="123" Click="button_Click"/>
+
     </Grid>
 </Window>
