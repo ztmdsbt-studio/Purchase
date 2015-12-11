@@ -1,10 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Threading;
 using System.Windows;
-using CsQuery.ExtensionMethods;
-using CsQuery.ExtensionMethods.Internal;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
 using SeleniumWebdriverHelpers;
@@ -44,34 +42,47 @@ namespace ZTMDSBT.Purchase
       return this;
     }
 
-    public SeleniumSteps SelectSizeAndQuantity()
+    public SeleniumSteps SelectSizeAndQuantity(Product product)
     {
-      var selectContainer = _driver.FindElements(By.ClassName("exp-pdp-size-container")).FirstOrDefault(e => e.Displayed);
+      //      var selectContainer = _driver.FindElements(By.ClassName("exp-pdp-size-container")).FirstOrDefault(e => e.Displayed);
+      var selectContainer =
+        _driver.FindElement(By.CssSelector(".exp-pdp-size-and-quantity-container > div:nth-child(1)"));
       selectContainer.Click();
-      var sizeSelector = selectContainer.FindElement(By.TagName("ul"));
       Thread.Sleep(200);
-      var option =
-        sizeSelector.FindElements(By.TagName("option"))
-          .FirstOrDefault(e => e.GetAttribute("data-label") == "(" + 46 + ")"
-                            && !e.GetAttribute("class").Contains("exp-pdp-size-not-in-stock")
-                            && e.Displayed);
-      if (option == null)
+
+      var sizeOption =
+        _driver.ExecuteJavaScript<IWebElement>(
+          "return $('ul.nsg-form--drop-down--option-container:nth-child(1)>li:contains(\\'" + product.Size + "\\')')[0]");
+
+      // should change to stock check.
+      if (sizeOption == null)
       {
         MessageBox.Show("out of stock.");
         return null;
       }
-      option.Click();
+      sizeOption.Click();
+
+      // don't choose quantity for now.
+      //      var quantityOption =
+      //        _driver.ExecuteJavaScript<IWebElement>("return $('ul.exp-pdp-quantity-dropdown > li:contains(1)')");
+      //      quantityOption.Click();
       return this;
     }
 
     public SeleniumSteps AddedToCart()
     {
-      throw new NotImplementedException();
+      var submitButton = _driver.FindElement(By.Id("buyingtools-add-to-cart-button"));
+      submitButton.Click();
+      _driver.WaitForAjax();
+      return this;
     }
 
     public SeleniumSteps CreateOrder()
     {
-      throw new NotImplementedException();
+      var checkout = _driver.FindElement(By.LinkText("结算"));
+      checkout.Click();
+      _driver.WaitForAjax();
+      return this;
     }
 
     public SeleniumSteps FillPaymentGetwayAndOtherInfo()
