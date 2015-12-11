@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Threading;
 using System.Windows;
@@ -71,23 +72,59 @@ namespace ZTMDSBT.Purchase
 
     public SeleniumSteps AddedToCart()
     {
-      var submitButton = _driver.FindElement(By.Id("buyingtools-add-to-cart-button"));
-      submitButton.Click();
+      var addToCart = _driver.FindElement(By.Id("buyingtools-add-to-cart-button"));
+      addToCart.Click();
       _driver.WaitForAjax();
       return this;
     }
 
     public SeleniumSteps CreateOrder()
     {
-      var checkout = _driver.FindElement(By.LinkText("结算"));
-      checkout.Click();
-      _driver.WaitForAjax();
+      GotoCheckout();
+      FillPaymentGetway();
+      FillInvoceInfo();
+      Checkout();
+      Confirm();
       return this;
     }
 
-    public SeleniumSteps FillPaymentGetwayAndOtherInfo()
+    private void Confirm()
     {
-      throw new NotImplementedException();
+      var confirm = _driver.FindElement(By.ClassName("ch4_btnPlaceOrder"));
+      confirm.Click();
     }
+
+    private void GotoCheckout()
+    {
+      Thread.Sleep(200);
+      var cartButton = _driver.FindElement(By.ClassName("gnav-member-bar--cart-icon"));
+      cartButton.Click();
+      _driver.WaitForAjax();
+      var checkout = _driver.FindElement(By.LinkText("结算"));
+      checkout.Click();
+      _driver.WaitForAjax();
+    }
+
+    private void FillPaymentGetway()
+    {
+      var aliapy = _driver.FindElement(By.CssSelector("[for=alipay]"));
+      aliapy.Click();
+    }
+
+    private void FillInvoceInfo()
+    {
+      var needInvoce = _driver.FindElement(By.CssSelector("[for=fapiaoFlag]"));
+      needInvoce.Click();
+      var infoceTitle = _driver.FindElement(By.CssSelector("[name=fapiaoTitle]"));
+      infoceTitle.SendKeys("xxxxxxxxxxx");
+    }
+
+    private void Checkout()
+    {
+      var next = _driver.FindElement(By.Id("billingSubmit"));
+      next.Click();
+      _driver.WaitForAjax();
+    }
+
   }
 }
