@@ -87,6 +87,7 @@
     </ApplicationDefinition>
     <Compile Include="Product.cs" />
     <Compile Include="PurchaseConfiguration.cs" />
+    <Compile Include="SeleniumIdeExport.cs" />
     <Compile Include="SeleniumSteps.cs" />
     <Compile Include="User.cs" />
     <Page Include="MainWindow.xaml">
