@@ -35,8 +35,9 @@ namespace ZTMDSBT.Purchase
       Task.Run(() => steps.Login(user))
         .ContinueWith(s => steps.GotoProductPage(product.URL))
         .ContinueWith(s => steps.SelectSizeAndQuantity(product))
-        .ContinueWith(s => steps.AddedToCart());
-      //      setps.AddedToCart();
+        .ContinueWith(s => steps.AddedToCart())
+        .ContinueWith(s => steps.CreateOrder())
+        ;
       //      setps.CreateOrder();
       //      setps.FillPaymentGetwayAndOtherInfo();
     }
