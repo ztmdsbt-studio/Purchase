@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZTMDSBT.Purchase
+﻿namespace ZTMDSBT.Purchase.Models
 {
   public class Product
   {

@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Threading;
 using System.Windows;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
-using SeleniumWebdriverHelpers;
+using OpenQA.Selenium.Support.UI;
+using ZTMDSBT.Purchase.Models;
 
-namespace ZTMDSBT.Purchase
+namespace ZTMDSBT.Purchase.Selenium
 {
   internal class SeleniumSteps
   {
@@ -32,14 +29,21 @@ namespace ZTMDSBT.Purchase
       pwdInput.SendKeys(user.Password);
       var submit = _driver.FindElement(By.ClassName("exp-login-submit"));
       submit.Click();
-      _driver.WaitForAjax();
       return this;
     }
 
     public SeleniumSteps GotoProductPage(string url)
     {
-      _driver.Url = url;
-      _driver.Navigate();
+      _driver.Navigate().GoToUrl(url);
+      return this;
+    }
+
+    public SeleniumSteps WaitUntilZero()
+    {
+      var wait = new WebDriverWait(_driver, new TimeSpan(1, 0, 0));
+      wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+      wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
+      wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("buyingtools-add-to-cart-button")));
       return this;
     }
 
@@ -49,32 +53,33 @@ namespace ZTMDSBT.Purchase
       var selectContainer =
         _driver.FindElement(By.CssSelector(".exp-pdp-size-and-quantity-container > div:nth-child(1)"));
       selectContainer.Click();
-      Thread.Sleep(200);
 
       var sizeOption =
         _driver.ExecuteJavaScript<IWebElement>(
           "return $('ul.nsg-form--drop-down--option-container:nth-child(1)>li:contains(\\'" + product.Size + "\\')')[0]");
 
       // should change to stock check.
-      if (sizeOption == null)
+      if (sizeOption.GetAttribute("class").Contains("selectBox-disabled"))
       {
         MessageBox.Show("out of stock.");
         return null;
       }
       sizeOption.Click();
+      return this;
 
       // don't choose quantity for now.
       //      var quantityOption =
       //        _driver.ExecuteJavaScript<IWebElement>("return $('ul.exp-pdp-quantity-dropdown > li:contains(1)')");
       //      quantityOption.Click();
-      return this;
     }
 
     public SeleniumSteps AddedToCart()
     {
       var addToCart = _driver.FindElement(By.Id("buyingtools-add-to-cart-button"));
       addToCart.Click();
-      _driver.WaitForAjax();
+      var wait = new WebDriverWait(_driver, new TimeSpan(1, 0, 0));
+      var success = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("minicart-view-cart-button")));
+      success.Click();
       return this;
     }
 
@@ -82,7 +87,7 @@ namespace ZTMDSBT.Purchase
     {
       GotoCheckout();
       FillPaymentGetway();
-      FillInvoceInfo();
+      //      FillInvoceInfo();
       Checkout();
       Confirm();
       return this;
@@ -96,13 +101,13 @@ namespace ZTMDSBT.Purchase
 
     private void GotoCheckout()
     {
-      Thread.Sleep(200);
-      var cartButton = _driver.FindElement(By.ClassName("gnav-member-bar--cart-icon"));
-      cartButton.Click();
-      _driver.WaitForAjax();
-      var checkout = _driver.FindElement(By.LinkText("结算"));
-      checkout.Click();
-      _driver.WaitForAjax();
+      var wait = new WebDriverWait(_driver, new TimeSpan(1, 0, 0));
+      wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+      if (wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.Id("pageLoader"))))
+      {
+        var checkout = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("ch4_cartCheckoutBtn")));
+        checkout.Click();
+      }
     }
 
     private void FillPaymentGetway()
@@ -123,8 +128,6 @@ namespace ZTMDSBT.Purchase
     {
       var next = _driver.FindElement(By.Id("billingSubmit"));
       next.Click();
-      _driver.WaitForAjax();
     }
-
   }
 }
