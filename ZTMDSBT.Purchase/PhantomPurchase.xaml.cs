@@ -12,8 +12,10 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using RestSharp;
+using RestSharp.Extensions.MonoHttp;
 using ZTMDSBT.Purchase.Models;
 using ZTMDSBT.Purchase.Selenium;
+using ZTMDSBT.Purchase.Service;
 using DataFormat = RestSharp.DataFormat;
 
 namespace ZTMDSBT.Purchase
@@ -41,31 +43,16 @@ namespace ZTMDSBT.Purchase
     {
       var user = PurchaseConfiguration.GetUser();
       var client = new RestClient(Consts.BaseUrl);
-      var request = BuildRequest(user);
+      var request = Request.Login(user);
       var response = client.Execute(request);
       var content = response.Content;
       cookies = response.Cookies;
       request.AddCookie(cookies[0].Name, cookies[0].Value);
+      request  = new RestRequest("/pd/kd-8-xmas-ep-%E7%AF%AE%E7%90%83%E9%9E%8B/pid-10345106/pgid-10345980", Method.GET);
+
+      response = client.Execute(request);
+      content = response.Content;
     }
 
-    private static RestRequest BuildRequest(User user)
-    {
-      var request = new RestRequest(Consts.LoginUrl, Method.POST);
-      request.Parameters.Clear();
-      request.AddParameter("login", user.Username);
-      request.AddParameter("password", user.Password);
-      request.AddParameter("rememberMe", "false");
-      request.AddHeader("Accept", "application/json, text/javascript, */*; q=0.01");
-      request.AddHeader("Content-Locale", "zh_CN");
-      request.AddHeader("Origin", Consts.BaseUrl);
-      request.AddHeader("User-Agent",
-        "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
-      request.AddHeader("Authorization", "CPC");
-      request.AddHeader("DNT", "1");
-      request.AddHeader("Referer", Consts.BaseUrl);
-      request.AddHeader("Accept-Encoding", "gzip, deflate");
-      request.AddHeader("Accept-Language", "zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4,zh-TW;q=0.2");
-      return request;
-    }
   }
 }

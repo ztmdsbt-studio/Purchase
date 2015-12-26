@@ -167,6 +167,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="HTMLPage1.html" />
+    <Content Include="html\HTMLPage1.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Service\" />
