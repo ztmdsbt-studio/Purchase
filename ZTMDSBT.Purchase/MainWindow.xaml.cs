@@ -46,7 +46,7 @@ namespace ZTMDSBT.Purchase
 
       var user = PurchaseConfiguration.GetUser();
       Task.Run(() => steps.Login(user))
-        .ContinueWith(s => steps.GotoProductPage(product.URL))
+        .ContinueWith(s => steps.GotoProductPage(product.Url))
         .ContinueWith(s => steps.WaitUntilZero())
         .ContinueWith(s => steps.SelectSizeAndQuantity(product))
         .ContinueWith(s => steps.AddedToCart())
