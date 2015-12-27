@@ -1,7 +1,8 @@
 ﻿{
-  "SKU": "378037-002",
-  "Size": "43",
-  "BackSize": [ 40.5, 41, 41.5, 42, 42.5, 43, 43.5, 44, 44.5, 45, 45.5, 46 ],
+  "MainSize": "43",
+  "BackSize": [ 36, 36.5, 37, 37.5, 38, 38.5 ],
   "Quantity": 1,
-  "URL": "http://store.nike.com/cn/zh_cn/pd/kobe-10-elite-coda-%E7%AF%AE%E7%90%83%E9%9E%8B/pid-10345109/pgid-10345981"
+  "StyleNumber": "745334",
+  "ColorNumber": "001",
+  "URL": "http://store.nike.com/cn/zh_cn/pd/kobe-10-ep-%E7%AF%AE%E7%90%83%E9%9E%8B/pid-10303667/pgid-10306027"
 }

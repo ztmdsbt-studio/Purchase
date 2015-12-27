@@ -91,6 +91,8 @@
     </ApplicationDefinition>
     <Compile Include="Common\ApplicationContext.cs" />
     <Compile Include="Consts.cs" />
+    <Compile Include="Models\Attempt.cs" />
+    <Compile Include="Models\ProductSku.cs" />
     <Compile Include="PhantomPurchase.xaml.cs">
       <DependentUpon>PhantomPurchase.xaml</DependentUpon>
     </Compile>
@@ -101,6 +103,7 @@
     <Compile Include="Selenium\SeleniumIdeExport.cs" />
     <Compile Include="Selenium\SeleniumSteps.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Service\Request.cs" />
     <Page Include="PhantomPurchase.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -169,9 +172,7 @@
     <Content Include="HTMLPage1.html" />
     <Content Include="html\HTMLPage1.html" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

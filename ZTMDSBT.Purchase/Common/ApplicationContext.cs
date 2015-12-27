@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZTMDSBT.Purchase.Models;
 
 namespace ZTMDSBT.Purchase
 {
   public class ApplicationContext
   {
-    private static readonly ApplicationContext _current = new ApplicationContext();
-
     private ApplicationContext()
     { }
 
-    public ApplicationContext Context => _current;
+    public static ApplicationContext Context { get; } = new ApplicationContext();
+
+    public List<User> LoginedUsers { get; } = new List<User>();
   }
 }

@@ -56,7 +56,7 @@ namespace ZTMDSBT.Purchase.Selenium
 
       var sizeOption =
         _driver.ExecuteJavaScript<IWebElement>(
-          "return $('ul.nsg-form--drop-down--option-container:nth-child(1)>li:contains(\\'" + product.Size + "\\')')[0]");
+          "return $('ul.nsg-form--drop-down--option-container:nth-child(1)>li:contains(\\'" + 43 + "\\')')[0]");
 
       // should change to stock check.
       if (sizeOption.GetAttribute("class").Contains("selectBox-disabled"))

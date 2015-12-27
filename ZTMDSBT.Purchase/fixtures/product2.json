@@ -1,7 +1,8 @@
 ﻿{
-  "SKU": "378038-002",
-  "Size": "37.5",
+  "MainSize": "37.5",
   "BackSize": [ 36, 36.5, 37, 37.5, 38, 38.5 ],
   "Quantity": 1,
+  "StyleNumber": "378038",
+  "ColorNumber": "002",
   "URL": "http://store.nike.com/cn/zh_cn/pd/air-jordan-11-retro-bg-%E8%BF%90%E5%8A%A8%E9%9E%8B/pid-10337294/pgid-10284307"
 }
