@@ -8,9 +8,7 @@ namespace ZTMDSBT.Purchase
 {
   public static class Consts
   {
-    public const string LoginUrl = "/profile/login?Content-Locale=zh_CN";
-
-    public const string BaseUrl = "https://www.nike.com/cn/zh_cn";
+    public const string LoginUrl = "profile/login?Content-Locale=zh_CN";
 
     public const string ProductInfoUrl = "html-services/templateData/pdpData";
   }
