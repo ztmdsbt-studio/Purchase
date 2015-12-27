@@ -7,11 +7,8 @@
         mc:Ignorable="d"
         Title="Purchase Nike!" Height="350" Width="525">
     <Canvas>
-        <ComboBox x:Name="skuCmb" Canvas.Left="162" Canvas.Top="140" Width="100">
-            <ComboBoxItem>男</ComboBoxItem>
-            <ComboBoxItem>女</ComboBoxItem>
-        </ComboBox>
-        <Button x:Name="button" Content="登录庞洁" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Click="button_Click" Canvas.Left="267" Canvas.Top="140"/>
+        <Button x:Name="btnLogin" Content="登录庞洁" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Click="BtnLogin_click" Canvas.Left="60" Canvas.Top="37"/>
+        <Button x:Name="btnGetProduct" Content="获取科比" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Click="BtnGetProduct_click" Canvas.Left="332" Canvas.Top="37"/>
 
     </Canvas>
 </Window>

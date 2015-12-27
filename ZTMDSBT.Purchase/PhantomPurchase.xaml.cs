@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 //www.nike.com/profile/login?Content-Locale=zh_CN
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -12,6 +13,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using RestSharp;
+using RestSharp.Authenticators;
 using RestSharp.Extensions.MonoHttp;
 using ZTMDSBT.Purchase.Models;
 using ZTMDSBT.Purchase.Selenium;
@@ -26,7 +28,6 @@ namespace ZTMDSBT.Purchase
   public partial class PhantomPurchase : Window
   {
 
-    private IList<RestResponseCookie> cookies;
 
     public PhantomPurchase()
     {
@@ -38,21 +39,28 @@ namespace ZTMDSBT.Purchase
     {
 
     }
-
-    private void button_Click(object sender, RoutedEventArgs e)
+    private void BtnGetProduct_click(object sender, RoutedEventArgs e)
     {
-      var user = PurchaseConfiguration.GetUser();
-      var client = new RestClient(Consts.BaseUrl);
-      var request = Request.Login(user);
-      var response = client.Execute(request);
-      var content = response.Content;
-      cookies = response.Cookies;
-      request.AddCookie(cookies[0].Name, cookies[0].Value);
-      request  = new RestRequest("/pd/kd-8-xmas-ep-%E7%AF%AE%E7%90%83%E9%9E%8B/pid-10345106/pgid-10345980", Method.GET);
-
-      response = client.Execute(request);
-      content = response.Content;
+      var product = PurchaseConfiguration.GetProduct();
+      product.GetProductInfo(ApplicationContext.Context.LoginedUsers.First().Cookies);
+      MessageBox.Show(
+        string.Format("Instock:{0}, Outstock:{1}",
+          product.ProductSkus.Where(s => s.InStock)
+            .Aggregate(string.Empty, (result, next) => result += (next.DisplaySize + ";")),
+          product.ProductSkus.Where(s => !s.InStock)
+            .Aggregate(string.Empty, (result, next) => result += next.DisplaySize + ";")));
     }
 
+    private void BtnLogin_click(object sender, RoutedEventArgs e)
+    {
+      var user = PurchaseConfiguration.GetUser();
+      if (user.Login())
+      {
+        ApplicationContext.Context.LoginedUsers.Add(user);
+        MessageBox.Show("logined!");
+        return;
+      }
+      MessageBox.Show("login failed!");
+    }
   }
 }
