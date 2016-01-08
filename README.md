@@ -30,4 +30,3 @@ If you haven't done so yet:
 Then clone this repo to your local machine to get started with your own project.
 
 Happy coding!
-haha
