@@ -1,24 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-//www.nike.com/profile/login?Content-Locale=zh_CN
-using System.IO;
+﻿//www.nike.com/profile/login?Content-Locale=zh_CN
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Remote;
-using RestSharp;
-using RestSharp.Authenticators;
-using RestSharp.Extensions.MonoHttp;
-using ZTMDSBT.Purchase.Models;
-using ZTMDSBT.Purchase.Selenium;
 using ZTMDSBT.Purchase.Service;
-using DataFormat = RestSharp.DataFormat;
 
 namespace ZTMDSBT.Purchase
 {
