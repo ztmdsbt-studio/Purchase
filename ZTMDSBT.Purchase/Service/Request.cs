@@ -34,7 +34,11 @@ namespace ZTMDSBT.Purchase.Service
       var productPath = url.Replace("https://store.nike.com/", "").Replace("http://store.nike.com/", "");//.UrlEncode();
       var request = new RestRequest(productPath);
       return request;
+    }
 
+    public static RestRequest ProductInfoByAPI(string url)
+    {
+      #region use get product api to get product info
       //      var urlParsing = url.Split('/');
       //      var productName = urlParsing[6];
       //      var productId = urlParsing[7].Split('-')[1];
@@ -91,6 +95,9 @@ namespace ZTMDSBT.Purchase.Service
       //      request.AddCookie("_s_vi", "[CS]v1|2B3FDD3785195D08-60000606A00390AE[CE]");
       //      request.AddCookie("dreams_session", "catching-dreams");
       //      return request;
+      #endregion
+
+      throw new NotImplementedException();
     }
 
     private static void AddBaseHeaders(RestRequest request)
