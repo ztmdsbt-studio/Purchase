@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using ZTMDSBT.Purchase.Service;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 namespace ZTMDSBT.Purchase.Models
 {
@@ -43,7 +44,22 @@ namespace ZTMDSBT.Purchase.Models
         Cookies = response.Cookies;
         return true;
       }
-      else return false;
+      return false;
+    }
+
+    public Task LoginByHttpHandler()
+    {
+      
+    }
+
+    public Task AddtoCart(Product product)
+    {
+      throw new NotImplementedException();
+    }
+
+    public Task NavigateToShoppingCartPage()
+    {
+      throw new NotImplementedException();
     }
   }
 }
