@@ -37,13 +37,14 @@ namespace ZTMDSBT.Purchase
     private void BtnLogin_click(object sender, RoutedEventArgs e)
     {
       var user = PurchaseConfiguration.GetUser();
-      if (user.Login())
-      {
-        ApplicationContext.Context.LoginedUsers.Add(user);
-        MessageBox.Show("logined!");
-        return;
-      }
-      MessageBox.Show("login failed!");
+      user.LoginByHttpHandler();//.Wait();
+//      if (user.Login())
+//      {
+//        ApplicationContext.Context.LoginedUsers.Add(user);
+//        MessageBox.Show("logined!");
+//        return;
+//      }
+//      MessageBox.Show("login failed!");
     }
   }
 }
