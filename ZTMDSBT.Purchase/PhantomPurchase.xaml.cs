@@ -19,9 +19,8 @@ namespace ZTMDSBT.Purchase
     }
 
     private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-    {
+    { }
 
-    }
     private void BtnGetProduct_click(object sender, RoutedEventArgs e)
     {
       var product = PurchaseConfiguration.GetProduct();
@@ -34,17 +33,13 @@ namespace ZTMDSBT.Purchase
             .Aggregate(string.Empty, (result, next) => result += next.DisplaySize + ";")));
     }
 
-    private void BtnLogin_click(object sender, RoutedEventArgs e)
+    private async void BtnLogin_click(object sender, RoutedEventArgs e)
     {
       var user = PurchaseConfiguration.GetUser();
-      user.LoginByHttpHandler();//.Wait();
-//      if (user.Login())
-//      {
-//        ApplicationContext.Context.LoginedUsers.Add(user);
-//        MessageBox.Show("logined!");
-//        return;
-//      }
-//      MessageBox.Show("login failed!");
+      if (await user.LoginByHttpHandler())
+      {
+        MessageBox.Show("Login succeed!");
+      }
     }
   }
 }
