@@ -24,11 +24,10 @@ namespace ZTMDSBT.Purchase.Service
       message.Headers.Add("Origin", "http://www.nike.com");
       message.Headers.Add("Pragma", "no-cache");
       message.Headers.Referrer = new Uri("http://store.nike.com/cn/zh_cn/");
-      message.Headers.Add("UserAgent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
+      message.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
       message.Content = content;
       return message;
     }
-
 
     public static HttpRequestMessage BuildOptionLoginRequest()
     {
@@ -45,7 +44,43 @@ namespace ZTMDSBT.Purchase.Service
       request.Headers.Add("Origin", "http://www.nike.com");
       request.Headers.Add("Pragma", "no-cache");
       request.Headers.Referrer = new Uri("http://store.nike.com/cn/zh_cn/");
-      request.Headers.Add("UserAgent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
+      request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
+      return request;
+    }
+
+    public static HttpRequestMessage BuildOptionGetUserInfoRequest(string userId)
+    {
+      var request = new HttpRequestMessage(HttpMethod.Options, $"profile/services/users/{userId}");
+      request.Headers.Add("Accept", "*/*");
+      request.Headers.Add("Accept-Encoding", "gzip, deflate, sdch");
+      request.Headers.Add("Accept-Language", "zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4,zh-CN;q=0.2");
+      request.Headers.Add("Access-Control-Request-Headers", "accept, authorization, content-locale");
+      request.Headers.Add("Access-Control-Request-Method", "GET");
+      request.Headers.Add("Cache-Control", "no-cache");
+      request.Headers.Add("Connection", "keep-alive");
+      request.Headers.Add("Host", "www.nike.com");
+      request.Headers.Add("Origin", "http://www.nike.com");
+      request.Headers.Add("Pragma", "no-cache");
+      request.Headers.Referrer = new Uri("http://www.nike.com/cn/zh_cn/");
+      request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
+      return request;
+    }
+
+    public static HttpRequestMessage BuildGetUserInfoRequest(string userId)
+    {
+      var request = new HttpRequestMessage(HttpMethod.Get, $"profile/services/users/{userId}");
+      request.Headers.Add("Accept", "application/json, text/javascript, */*; q=0.01");
+      request.Headers.Add("Accept-Encoding", "gzip, deflate, sdch");
+      request.Headers.Add("Accept-Language", "zh-TW,zh;q=0.8,en-US;q=0.6,en;q=0.4,zh-CN;q=0.2");
+      request.Headers.Add("Authorization", "CPC");
+      request.Headers.Add("Cache-Control", "no-cache");
+      request.Headers.Add("Connection", "keep-alive");
+      request.Headers.Add("Content-Locale", "zh_CN");
+      request.Headers.Add("Host", "www.nike.com");
+      request.Headers.Add("Origin", "http://www.nike.com");
+      request.Headers.Add("Pragma", "no-cache");
+      request.Headers.Referrer = new Uri("http://www.nike.com/cn/zh_cn/");
+      request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
       return request;
     }
 
@@ -60,9 +95,10 @@ namespace ZTMDSBT.Purchase.Service
       request.Headers.Add("Host", "secure-store.nike.com");
       request.Headers.Add("Pragma", "no-cache");
       request.Headers.Referrer = new Uri("http://store.nike.com/cn/zh_cn/pd/kobe-11-elite-low-bhm-%E7%AF%AE%E7%90%83%E9%9E%8B/pid-10873886/pgid-11181193");
-      request.Headers.Add("UserAgent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
+      request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
       return request;
     }
+
     public static HttpRequestMessage BuildCartInfoRequest()
     {
       var request = new HttpRequestMessage(HttpMethod.Get, "ap/services/jcartService?callback=jQuery17206263505546376109_1453400955311&action=getCartSummary&rt=json&country=CN&lang_locale=zh_CN&_=1453401043711");
@@ -74,7 +110,7 @@ namespace ZTMDSBT.Purchase.Service
       request.Headers.Add("Host", "secure-store.nike.com");
       request.Headers.Add("Pragma", "no-cache");
       request.Headers.Referrer = new Uri("http://store.nike.com/cn/zh_cn/pd/kobe-11-elite-low-bhm-%E7%AF%AE%E7%90%83%E9%9E%8B/pid-10873886/pgid-11181193");
-      request.Headers.Add("UserAgent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
+      request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
       return request;
     }
   }

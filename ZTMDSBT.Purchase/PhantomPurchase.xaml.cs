@@ -40,6 +40,9 @@ namespace ZTMDSBT.Purchase
       {
         MessageBox.Show("Login succeed!");
       }
+
+      // get user info:
+      await user.GetUserInfo();
     }
   }
 }

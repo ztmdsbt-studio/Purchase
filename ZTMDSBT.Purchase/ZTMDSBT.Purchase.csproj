@@ -80,6 +80,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\ApplicationContext.cs" />
+    <Compile Include="Common\Extendtions.cs" />
     <Compile Include="Consts.cs" />
     <Compile Include="Models\Attempt.cs" />
     <Compile Include="Models\ProductSku.cs" />
