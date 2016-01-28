@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using CsQuery;
 using CsQuery.ExtensionMethods;
 using CsQuery.ExtensionMethods.Internal;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using RestSharp.Extensions;
+using ZTMDSBT.Purchase.Common;
 using ZTMDSBT.Purchase.Service;
 
 namespace ZTMDSBT.Purchase.Models
@@ -46,22 +48,31 @@ namespace ZTMDSBT.Purchase.Models
 
     public string Url { get; set; }
 
-    public void GetProductInfo(IList<RestResponseCookie> cookies, string url = null)
+    public async Task GetProductInfo(User currentUser = null, string url = null)
     {
       var producUrl = url ?? Url;
+      var client = Utilities.HttpClient("http://store.nike.com", new CookieContainer());
+      var response = await client.SendAsync(RequestMessageBuilder.BuildProductInfoRequest(producUrl));
+      response.EnsureSuccessStatusCode();
+      FillProductInfo(await response.Content.ReadAsStringAsync());
+    }
 
+    public void GetProductInfo_old(string url = null)
+    {
+      var producUrl = url ?? Url;
       var client = new RestClient("http://store.nike.com");
       var request = Request.ProductInfoByUrl(producUrl);
       var response = client.Execute(request);
       if (response.StatusCode == HttpStatusCode.OK)
       {
-        FillProductInfo(response);
+        FillProductInfo(response.Content);
       }
     }
 
-    private void FillProductInfo(IRestResponse response)
+    private void FillProductInfo(string content)
     {
-      CQ dom = response.Content;
+
+      CQ dom = content;
       var productData = dom["[type='template-data']"];
       _content = JObject.Parse(productData[0].InnerHTML);
       ProductId = _content["productId"].ToString();

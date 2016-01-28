@@ -8,7 +8,7 @@ namespace ZTMDSBT.Purchase
     private ApplicationContext()
     { }
 
-    public static ApplicationContext Context { get; } = new ApplicationContext();
+    public static ApplicationContext Current { get; } = new ApplicationContext();
 
     public List<User> LoginedUsers { get; } = new List<User>();
   }

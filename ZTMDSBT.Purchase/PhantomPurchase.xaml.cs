@@ -21,28 +21,24 @@ namespace ZTMDSBT.Purchase
     private void MainWindow_Loaded(object sender, RoutedEventArgs e)
     { }
 
-    private void BtnGetProduct_click(object sender, RoutedEventArgs e)
+    private async void BtnGetProduct_click(object sender, RoutedEventArgs e)
     {
       var product = PurchaseConfiguration.GetProduct();
-      product.GetProductInfo(ApplicationContext.Context.LoginedUsers.First().Cookies);
+      await product.GetProductInfo();
       MessageBox.Show(
-        string.Format("Instock:{0}, Outstock:{1}",
-          product.ProductSkus.Where(s => s.InStock)
-            .Aggregate(string.Empty, (result, next) => result += (next.DisplaySize + ";")),
-          product.ProductSkus.Where(s => !s.InStock)
-            .Aggregate(string.Empty, (result, next) => result += next.DisplaySize + ";")));
+        $"Instock:{product.ProductSkus.Where(s => s.InStock).Aggregate(string.Empty, (result, next) => result += (next.DisplaySize + ";"))}, Outstock:{product.ProductSkus.Where(s => !s.InStock).Aggregate(string.Empty, (result, next) => result += next.DisplaySize + ";")}");
     }
 
     private async void BtnLogin_click(object sender, RoutedEventArgs e)
     {
       var user = PurchaseConfiguration.GetUser();
-      if (await user.LoginByHttpHandler())
-      {
-        MessageBox.Show("Login succeed!");
-      }
+      await user.LoginByHttpHandler();
+      ApplicationContext.Current.LoginedUsers.Add(user);
 
-      // get user info:
-      await user.GetUserInfo();
+      await user.GetUserInfo(); // 必要步骤，否则无法在下一步中生成request cookies
+
+      await user.GetCartInfo(); // 必要步骤，获取购物车摘要的cookie。
+      MessageBox.Show("Login succeed!");
     }
   }
 }

@@ -81,6 +81,7 @@
     </ApplicationDefinition>
     <Compile Include="Common\ApplicationContext.cs" />
     <Compile Include="Common\Extendtions.cs" />
+    <Compile Include="Common\Utilities.cs" />
     <Compile Include="Consts.cs" />
     <Compile Include="Models\Attempt.cs" />
     <Compile Include="Models\ProductSku.cs" />
@@ -147,11 +148,7 @@
     <Folder Include="EventAggregation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <ProjectExtensions>
-    <VisualStudio>
-      <UserProperties fixtures_4product1_1json__JSONSchema="http://json.schemastore.org/csslintrc" />
-    </VisualStudio>
-  </ProjectExtensions>
+  <ProjectExtensions />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

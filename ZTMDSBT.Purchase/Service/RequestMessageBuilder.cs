@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using ZTMDSBT.Purchase.Common;
+using ZTMDSBT.Purchase.Models;
 
 namespace ZTMDSBT.Purchase.Service
 {
@@ -99,9 +102,12 @@ namespace ZTMDSBT.Purchase.Service
       return request;
     }
 
-    public static HttpRequestMessage BuildCartInfoRequest()
+    public static HttpRequestMessage BuildCartInfoRequest(User user)
     {
-      var request = new HttpRequestMessage(HttpMethod.Get, "ap/services/jcartService?callback=jQuery17206263505546376109_1453400955311&action=getCartSummary&rt=json&country=CN&lang_locale=zh_CN&_=1453401043711");
+      user.Cookies.Add(new Cookie("pr_data", BuildPrData(user)) { Domain = ".nike.com" });
+      user.Cookies.Add(new Cookie("pr_id", "14153657021") { Domain = ".nike.com" });
+      var unixTime = Utilities.UnixTimeStamp();
+      var request = new HttpRequestMessage(HttpMethod.Get, $"ap/services/jcartService?callback=jQuery172024396281223744154_{unixTime}&action=getCartSummary&rt=json&country=CN&lang_locale=zh_CN&_={unixTime}");
       request.Headers.Add("Accept", "*/*");
       request.Headers.Add("Accept-Encoding", "gzip, deflate, sdch");
       request.Headers.Add("Accept-Language", "en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4");
@@ -113,5 +119,29 @@ namespace ZTMDSBT.Purchase.Service
       request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
       return request;
     }
+
+    public static HttpRequestMessage BuildProductInfoRequest(string productUrl)
+    {
+      var request = new HttpRequestMessage(HttpMethod.Get, productUrl);
+      request.Headers.Add("Accept", "application/json, application/xml, text/json, text/x-json, text/javascript, text/xml");
+      request.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
+      return request;
+    }
+
+    private static string BuildPrData(User user)
+    {
+      var isLogin = user.IsLogined ? 1 : 0;
+      var displayName = user.DisplayName ?? string.Empty;
+      isLogin += 0; // isSwoosh 不知道是干什么的， 一直是否。 代码里： true：2 , false: 0
+      var exp = string.Empty; // 貌似是过期时间：this.exp && this.exp instanceof Date ? this.exp.toJSON() : "";
+      var avatarUrl = user.AvatarUrl ?? string.Empty;
+      var profileId = user.Id ?? string.Empty;
+      var screenName = user.ScreenName ?? string.Empty;
+      return Utilities.JsBase64Encode($"{isLogin}$${displayName}$${avatarUrl}$${exp}$${profileId}$${screenName}$$");
+    }
   }
 }
+// 1$$pangjie0001$$$$$$14153657021$$pangjie0001$$
+
+
+//Cookie:s_pers=%20c5%3Dnikecom%253Ehomepage%7C1454000836188%3B%20c6%3Dhomepage%7C1454000836190%3B%20c58%3Dno%2520value%7C1454000836194%3B%20l2%3Dno%2520value%7C1454000836196%3B; AnalysisUserId=VqpDvgoMQs8AAHmEw4YAAAFT; slCheck=3s9bAor50TAqHHj7jEMYTrxC/zpcwVOSc0acvOLkdOBG8b32EWOsUGRmzxJxnxDbJLhnXZmcDCqo0oRI2BLAVQ==; sls=3; llCheck=Nbt0ruucQGYFWYOSybvi9nlym8JXst41TuEBPx4rtKOxRzRp777lz/9lAGij1TELHVFwjCnExn6J/2k+l/EbwjJ+DdlS1QYOOQidAUphtZHFcRCkweqx493Kdap2Ss4f; pr_data=MSQkcGFuZ2ppZTAwMDEkJCQkJCQxNDE1MzY1NzAyMSQkcGFuZ2ppZTAwMDEkJA..; pr_id=14153657021
