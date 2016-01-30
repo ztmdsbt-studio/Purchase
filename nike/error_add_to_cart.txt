@@ -1,0 +1,30 @@
+https://secure-store.nike.com/ap/services/jcartService?callback=nike_Cart_handleJCartResponse&action=addItem&lang_locale=zh_CN&country=CN&catalogId=4&productId=10831039&price=1299&siteId=null&line1=Nike+Free+Mercurial+Superfly&line2=%E7%94%B7%E5%AD%90%E8%BF%90%E5%8A%A8%E9%9E%8B&passcode=null&sizeType=null&skuAndSize=15577370%3A43&qty=1&rt=json&view=3&skuId=15577370&displaySize=43&pil=322&psh=JTo2MM39ikhX9UTYlPA8rw&_=1454117869469
+
+Accept: application/javascript, */*; q=0.8
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-Hans-CN, zh-Hans; q=0.8, en-US; q=0.5, en; q=0.3
+Connection: Keep-Alive
+Cookie: slsw=N:Q; AnalysisUserId=23.61.195.176.45441453521248931; NIKE_COMMERCE_CCR=1454116645639; NIKE_COMMERCE_COUNTRY=CN; NIKE_COMMERCE_LANG_LOCALE=zh_CN; AMCV_F0935E09512D2C270A490D4D%40AdobeOrg=283337926%7CMCAAMB-1454721232%7CNRX38WO0n5BH8Th-nqAG_A%7CMCAAMLH-1454126098%7C11%7CMCIDTS%7C16831%7CMCMID%7C39471018035312362570499664046977693425%7CMCAID%7C2B517CC985013D6D-60000132A0013106; s_pers=%20s_dfa%3Dnikecomprod%7C1454118445893%3B%20c5%3Dnikecom%253Epdp%253ENIKE%2520FREE%2520MERCURIAL%2520SUPERFLY%7C1454119488446%3B%20c6%3Dpdp%253Astandard%7C1454119488449%3B%20c58%3Dno%2520value%7C1454119488456%3B; dreams_sample=50; utag_main=_st:1454118447272$ses_id:1454116996886%3Bexp-session; RES_TRACKINGID=682187596421909; ResonanceSegment=1; s_vi=[CS]v1|2B517CC985013D6D-60000132A0013106[CE]; ak_bmsc=779AE6C986A4A7C9821EC9A75ED919B774D3638CDB2E00004A0EAC563CA1845C~plIZ+Jb5aYsy84duSryQ8RL/Z07/9APtBP5REZoBWt3ZxINnpX1ok/Hfgb37/ELoQ6jikGRwzC3Bom0Ldzo8ZT7cfC66J+d0JjAvefQlwqnOTKNOfUniADeXL6RRyeV0TVFEWbIK69fNuSmjlwI1qY2PVkRq94EnmfacolP/m/Jy++N+ItlEI4MlIbYsuecPng; nike_locale=cn/zh_cn; guidU=178e15c7-bb87-4917-92af-ae16f998cbc3; neo.swimlane=43; mm_ten_mob=1; RES_SESSIONID=981297816455994; pr_data=0; guidS=9654dc63-2f40-4cb5-a952-bc916a0a8eb5; guidSTimestamp=1454116432489|1454116645970; s_sess=%20c51%3Dhorizontal%3B%20s_cc%3Dtrue%3B%20prevList2%3D%3B%20s_ppvl%3Dnikecom%25253Esmart%252520cart%25253Ewaiting%252C30%252C30%252C1358%252C1278%252C848%252C2560%252C1440%252C1%252CP%3B%20s_ppv%3Dnikecom%25253Epdp%25253ENIKE%252520FREE%252520MERCURIAL%252520SUPERFLY%252C30%252C30%252C1358%252C1278%252C848%252C2560%252C1440%252C1%252CP%3B; dreams_session=catching-dreams; slCheck=3s9bAor50TAqHHj7jEMYTlyUXOWHh2TK/J/FlU9IdJHN+WrlB7GJL7aHWJaGhjTAer9V5yIK7t0QmlPG7KCFoQ==; sls=3; llCheck=Xd4wPA23JLCuN92VfY2MQoa5TTMRFRHMqJeUV9FJooWXhWxzgp2LGLvoNMIdbnemmUoQ9TE1AKh1C6Viz0ZRIu+lkDYdI+eZoHEd1V9qrl5HpePy656MnWfcBoxYDYHv; nike_cp=cnns_soc_013016_m_nwffm_si01; _gscu_207448657=54116530d7lkxi22; _gscs_207448657=54116530bmr77f22|pv:2; _gscbrs_207448657=1; _jzqa=1.3836879051075704300.1454116531.1454116531.1454116531.1; _jzqb=1.4.10.1454116531.1; _jzqc=1; _jzqckmp=1; pr_id=14153657021; CONSUMERCHOICE_SESSION=t; CONSUMERCHOICE=cn/zh_cn; APID=4157455CE2E9A15A7761C76C027B0CCF.sin-332-app-ap-0; akaau_atc=1454118161~id=0399fd3bf5ac6e8d32dcbe7a52a0e787; TBMCookie_3736107480867066708=403546001454089228ezaKrasjLM58mAbbFoL798Kmri4=; ___utmvm=###########; ___utmva=###aaaa####; ___utmvb=#Z#aaaa    X##O#al#: #t#
+Host: secure-store.nike.com
+Referer: http://store.nike.com/cn/zh_cn/pd/free-mercurial-superfly-%E8%BF%90%E5%8A%A8%E9%9E%8B/pid-10831039/pgid-10918733?cp=cnns_soc_013016_m_nwffm_si01
+User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 10.0; WOW64; Trident/7.0)
+
+
+Cache-Control: max-age=0, no-cache, no-store
+Connection: keep-alive
+Content-Length: 1912
+Content-Type: application/javascript; charset=utf-8
+Date: Sat, 30 Jan 2016 01:37:49 GMT
+Expires: Sat, 30 Jan 2016 01:37:49 GMT
+Pragma: no-cache
+Server: Apache
+Set-Cookie: akaau_atc=1454118169~id=8af6521682474db6081b56f985d33c60; domain=.nike.com; path=/
+Set-Cookie: CART_SUMMARY=%7B%22profileId%22+%3A%2214153657021%22%2C%22userType%22+%3A%22DEFAULT_USER%22%2C%22securityStatus%22+%3A%223%22%2C%22cartCount%22+%3A1%7D; Domain=.nike.com; Path=/
+Set-Cookie: sls=3; Domain=.nike.com; Path=/
+Vary: Accept-Encoding
+X-EdgeConnect-MidMile-RTT: 4
+X-EdgeConnect-Origin-MEX-Latency: 432
+X-Swooshlet: app-ap-0 prdv sin-332-app-ap-0
+
+nike_Cart_handleJCartResponse({"status" :"failure","exceptions" :[{"property" :"","errorcode" :"ProductLimitExeeded","message" :"每位客户仅限于购买 1 个 Nike Free Mercurial Superfly 男子运动鞋。 [错误代码: 0104-05200023]"}],"order" :{"id" :"AO396640293","objType" :"order","itemQuantity" :1,"priceInfo" :"","originOfOrder" :"400","transient" :false,"shippingGroups" :[{"id" :"AS62770339","objType" :"shippingGroup","priceInfo" :"","shippingMethod" :"Ground Service","description" :"me","shippingMethodDisplay" :"普通达","commerceItems" :[{"id" :"AI2697007700","objType" :"commerceItem","priceInfo" :"","validForCountry" :true,"commerceItemClassType" :"default","quantity" :1,"catalogRefId" :"15577370","catalogId" :"4","product" :{"id" :"10831039","view" :"short","displayName" :"Nike Free Mercurial Superfly 男子运动鞋","description" :"Nike Free Mercurial Superfly 男子运动鞋","colorNumber" :"003","activeIndicator" :"ACTIVE","type" :"nikeProduct","styleNumber" :"805554","salePrice" :"1299.0","listPrice" :"1299.0","employeePrice" :"779.0","onSale" :false,"currency" :null,"currencyFormat" :"$0.00","formattedListPrice" :"$1,299.00","formattedSalePrice" :"$1,299.00","colorDescription" :"狼灰/黑/校园粟黄/游戏宝蓝","prdGroupId" :"10918733","nikeType" :"FOOTWEAR","dynamicAttributes" :{"promoexcl" :"TRUE","width" :"Regular","sizeconversion" :"1162","publishdate" :"01/30/2016","hardlaunch" :"true","divisioncode" :"20","productType" :"1","simplecolor" :"1534","quantitylimit" :"1","modelType" :"1","swatchcolorhex" :"1534","gender" :"Men","hide_payment" :"true","publishType" :"Launch"}},"shipTo" :null,"giftMessage" :null,"giftMessageType" :0,"itemSource" :"SC","sizeType" :"","displaySize" :"43","sizeDescription" :"9.5","eanNumber" :"00886066665977","colorNumber" :"003","colorDescription" :"狼灰/黑/校园粟黄/游戏宝蓝"}]}]},"res" :"600","pil" :"322"});
+

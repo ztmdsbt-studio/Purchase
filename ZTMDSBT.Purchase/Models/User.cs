@@ -29,27 +29,16 @@ namespace ZTMDSBT.Purchase.Models
     }
 
     public string Id { get; private set; }
-
     public string NikePlusId { get; private set; }
-
     public string ExternalUserId { get; private set; }
-
     public string Username { get; set; }
-
     public string Password { get; set; }
-
     public string Name { get; set; }
-
     public bool IsLogined { get; set; }
-
     public CookieContainer Cookies { get; }
-
     public ShoppingCart ShoppingCart { get; set; }
-
     public string AvatarUrl { get; set; }
-
     public string ScreenName { get; set; }
-
     public string DisplayName { get; set; }
     public string CountyDistrict { get; set; }
     public string State { get; set; }
