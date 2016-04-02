@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:ZTMDSBT.Purchase"
         mc:Ignorable="d"
         Title="Purchase Nike!" Height="350" Width="525">
-    <Canvas>
-        <Button x:Name="btnLogin" Content="登录庞洁" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Click="BtnLogin_click" Canvas.Left="60" Canvas.Top="37"/>
-        <Button x:Name="btnGetProduct" Content="获取科比" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Click="BtnGetProduct_click" Canvas.Left="332" Canvas.Top="37"/>
+  <Canvas>
+    <Button x:Name="btnLogin" Content="登录庞洁" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Click="BtnLogin_click" Canvas.Left="60" Canvas.Top="37"/>
+    <Button x:Name="btnGetProduct" Content="获取科比" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Click="BtnGetProduct_click" Canvas.Left="332" Canvas.Top="37"/>
+    <Button x:Name="btnGetProduct_Copy" Content="添加到购物车" HorizontalAlignment="Left" VerticalAlignment="Top" Width="123" Click="BtnAddToCart_click" Canvas.Left="188" Canvas.Top="116"/>
 
-    </Canvas>
+  </Canvas>
 </Window>

@@ -122,9 +122,12 @@ namespace ZTMDSBT.Purchase.Models
       Cookies.ReadCookies(responseMessage);
     }
 
-    public void AddtoCart(Product product)
+    public async Task AddtoCart(Product product)
     {
-      throw new NotImplementedException();
+
+      var client = Utilities.HttpClient("https://secure-store.nike.com", Cookies);
+      var responseMessage = await client.SendAsync(RequestMessageBuilder.BuildAddProductRequest(this));
+      responseMessage.EnsureSuccessStatusCode();
       // "https://secure-store.nike.com/ap/services/jcartService?callback=nike_Cart_handleJCartResponse&action=addItem&lang_locale=zh_CN&country=CN&catalogId=4&productId=10873886&price=1599&siteId=null&line1=Kobe+XI+Elite+Low+BHM&line2=%E7%94%B7%E5%AD%90%E7%AF%AE%E7%90%83%E9%9E%8B&passcode=null&sizeType=null&skuAndSize=15848073%3A42.5&qty=1&rt=json&view=3&skuId=15848073&displaySize=42.5&_=1453400314000"
     }
 
